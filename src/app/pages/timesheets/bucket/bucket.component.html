@@ -1,0 +1,158 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>AddBucket
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>LoanAccountNumber</th>
+                  <th>BucketCode</th>
+                   <th>OverDueAmount</th>
+                  <th>RunTime</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let bucketData of bucketDetails ;let i = index;">
+                  <td>
+                    <div *ngIf="bucketData.isEdit">
+                      <input type="text" [(ngModel)]="bucketData.loanAccountNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!bucketData.isEdit">
+                      {{bucketData.loanAccountNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="bucketData.isEdit">
+                      <input type="text" [(ngModel)]="bucketData.bucketCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!bucketData.isEdit">
+                      {{bucketData.bucketCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="bucketData.isEdit">
+                      <input type="text" [(ngModel)]="bucketData.overDueAmount" class="form-control"/>
+                  </div>
+                  <div *ngIf="!bucketData.isEdit">
+                      {{bucketData.overDueAmount}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="bucketData.isEdit">
+                      <input type="text" [(ngModel)]="bucketData.runTime" class="form-control"/>
+                  </div>
+                  <div *ngIf="!bucketData.isEdit">
+                      {{bucketData.runTime}}
+                  </div> 
+                  </td>
+                    <td *ngIf="bucketData.loanAccountNumber !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="bucketData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editBucket(bucketData.id,bucketData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="bucketData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(bucketData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteBucket(bucketData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                          
+                        </li>
+                            
+                      </ul>
+                       
+                      
+                      </div>
+                    </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add Bucket Details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveBucket()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">loanAccountNumber</label>
+            <input class="form-control" placeholder="Enter loanAccountNumber" type="text" name="loanAccountNumber"
+              autocomplete="off" formControlName="loanAccountNumber"
+              [ngClass]="{'is-invalid': submitted && form.loanAccountNumber.errors}" />
+            <div *ngIf="submitted && form.loanAccountNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.loanAccountNumber.errors.required">loanAccountNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">bucketCode</label>
+            <input class="form-control" placeholder="Enter bucketCode" type="text" name="bucketCode"
+              autocomplete="off" formControlName="bucketCode"
+              [ngClass]="{'is-invalid': submitted && form.bucketCode.errors}" />
+            <div *ngIf="submitted && form.bucketCode.errors" class="invalid-feedback">
+              <span *ngIf="form.bucketCode.errors.required">bucketCode is required.</span>
+            </div>
+          </div>
+           <div class="mb-3">
+            <label class="control-label">overDueAmount</label>
+            <input class="form-control" placeholder="Enter overDueAmount" type="number" name="overDueAmount"
+              autocomplete="off" formControlName="overDueAmount"
+              [ngClass]="{'is-invalid': submitted && form.overDueAmount.errors}" />
+            <div *ngIf="submitted && form.overDueAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.overDueAmount.errors.required">overDueAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">runTime</label>
+            <input class="form-control" placeholder="Enter runTime" type="date" name="runTime" autocomplete="off"
+              formControlName="runTime" [ngClass]="{'is-invalid': submitted && form.runTime.errors}" />
+            <div *ngIf="submitted && form.runTime.errors" class="invalid-feedback">
+              <span *ngIf="form.runTime.errors.required">runTime is required.</span>
+            </div>
+          </div>
+         </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

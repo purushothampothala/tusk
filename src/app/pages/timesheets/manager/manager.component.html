@@ -1,0 +1,223 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>Manager
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>Manager Name</th>
+                  <th>Manager Emp Id</th>
+                  <th>Manager EmailId</th>
+                  <th>Manager MobileNo</th>
+                  <th>Manager FromDate</th>
+                  <th>Manager To Date</th>
+                  <th>CreatedDate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let managerData of managerDetails ;let i = index;">
+               <!--   <td> {{ucicData.sourceSystemName}}</td>
+                  <td> {{ucicData.applicationNumber}}</td>
+                  <td> {{ucicData.loanAccountNumber}}</td>
+                  <td> {{ucicData.customerNumber}}</td>
+                  <td> {{ucicData.accountStatus}}</td>
+                  <td> {{ucicData.ucic}}</td>
+                  <td> {{ucicData.gucic}}</td>
+                  <td>{{ucicData.createdDate}}</td>-->
+                
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerName" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerName}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerEmpId" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerEmpId}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerEmailId" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerEmailId}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerMobileNo" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerMobileNo}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerFromDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerFromDate}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.managerToDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.managerToDate}}
+                  </div> 
+                  </td>
+
+
+                  <td>
+                    <div *ngIf="managerData.isEdit">
+                      <input type="text" [(ngModel)]="managerData.createdDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!managerData.isEdit">
+                      {{managerData.createdDate}}
+                  </div> 
+                  </td>
+                 
+                   <td *ngIf="managerData.status != ''">
+                      <div *ngIf="managerData.isEdit">
+                        <input type="text" [(ngModel)]="managerData.submittedDate" class="form-control"/>
+                    </div>
+                    <div *ngIf="!managerData.isEdit">
+                        {{managerData.submittedDate | date: 'dd MMM, YYYY'}}
+                    </div> 
+                    </td>
+                    <td *ngIf="managerData.accountStatus !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="managerData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editManager(managerData.id,managerData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="managerData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(managerData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteManager(managerData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                          
+                        </li>
+                            
+                      </ul>
+                       
+                      
+                      </div>
+                    </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add UCIC details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveManager()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">ManagerName</label>
+            <input class="form-control" placeholder="Enter managerName" type="text" name="managerName"
+              autocomplete="off" formControlName="managerName"
+              [ngClass]="{'is-invalid': submitted && form.managerName.errors}" />
+            <div *ngIf="submitted && form.managerName.errors" class="invalid-feedback">
+              <span *ngIf="form.managerName.errors.required">managerName is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">managerEmpId</label>
+            <input class="form-control" placeholder="Enter managerEmpId" type="text" name="managerEmpId"
+              autocomplete="off" formControlName="managerEmpId"
+              [ngClass]="{'is-invalid': submitted && form.managerEmpId.errors}" />
+            <div *ngIf="submitted && form.managerEmpId.errors" class="invalid-feedback">
+              <span *ngIf="form.managerEmpId.errors.required">managerEmpId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">managerEmailId</label>
+            <input class="form-control" placeholder="Enter managerEmailId" type="text" name="managerEmailId"
+              autocomplete="off" formControlName="managerEmailId"
+              [ngClass]="{'is-invalid': submitted && form.managerEmailId.errors}" />
+            <div *ngIf="submitted && form.managerEmailId.errors" class="invalid-feedback">
+              <span *ngIf="form.managerEmailId.errors.required">managerEmailId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">managerMobileNo</label>
+            <input class="form-control" placeholder="Enter managerMobileNo" type="text" name="managerMobileNo"
+              autocomplete="off" formControlName="managerMobileNo"
+              [ngClass]="{'is-invalid': submitted && form.managerMobileNo.errors}" />
+            <div *ngIf="submitted && form.managerMobileNo.errors" class="invalid-feedback">
+              <span *ngIf="form.managerMobileNo.errors.required">managerMobileNo is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">managerFromDate</label>
+            <input class="form-control" placeholder="Enter managerFromDate" type="date" name="managerFromDate" autocomplete="off"
+              formControlName="managerFromDate" [ngClass]="{'is-invalid': submitted && form.managerFromDate.errors}" />
+            <div *ngIf="submitted && form.managerFromDate.errors" class="invalid-feedback">
+              <span *ngIf="form.managerFromDate.errors.required">managerFromDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">managerToDate</label>
+            <input class="form-control" placeholder="Enter managerToDate" type="date" name="managerToDate" autocomplete="off"
+              formControlName="managerToDate" [ngClass]="{'is-invalid': submitted && form.managerToDate.errors}" />
+            <div *ngIf="submitted && form.managerToDate.errors" class="invalid-feedback">
+              <span *ngIf="form.managerToDate.errors.required">managerToDate is required.</span>
+            </div>
+          </div>
+  
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

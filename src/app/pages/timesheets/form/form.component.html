@@ -1,0 +1,65 @@
+
+
+
+
+<div>
+
+	<button style="margin: 5px;" class="btn btn-primary" (click)="addBlankRow()">Add New Row</button>
+	
+</div>
+<div>
+<button style="margin: 5px;" class="btn btn-primary" (click)="setDateOfWeek(-7)"> previousWeek </button>
+</div>
+<div>
+	<button style="margin: 5px;" class="btn btn-primary" (click)="setDateOfWeek(7)"> nextWeek </button>
+	</div>
+<div class="col-2 col-md-12">
+	<div class="card">
+		<div class="card-body">
+			<div class="table-responsive cnstr-record">
+				<table class="table table-bordered">
+					<thead>
+						<tr class="col">
+							<th *ngFor="let day of weekdays; let i= index;">{{day | titlecase}}<pre>{{getDateOfIndex(i)}}</pre>
+						</th>
+					</tr>
+					</thead>
+						<tr>
+					
+						</tr>
+						<tbody>
+						<tr *ngFor="let timesheetweek of blankRowArray ; let i = index">
+							<td>
+								<select style="width: 80px;" [(ngModel)]="timesheetweek.projectId"
+									[ngModelOptions]="{standalone: true}" class="form-control wp-100">
+
+									<option [ngValue]="0" disabled selected>project
+									</option>
+									<option [value]="1">project1</option>
+									<option [value]="2">project2</option>
+									<option [value]="3">project3</option>
+								</select>
+
+							</td>
+							<td *ngFor="let day of weekdays | slice:0:7;">
+								<input style="width: 60px;" type="number" [id]="day" [(ngModel)]="timesheetweek[day]"
+								class="hours-input">
+							</td>
+							<td class="total-cell">{{getTotalHours(timesheetweek)}}
+								
+							</td>
+
+							<button (click)="deleteRow(i)" class="btn btn-danger">delete</button>
+						</tr>
+					</tbody>
+				</table>
+
+				<button (click)=" onSubmit()" class="btn btn-success">Submit</button>
+
+
+			</div>
+
+		</div>
+	</div>
+
+</div>

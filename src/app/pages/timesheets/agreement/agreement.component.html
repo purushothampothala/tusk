@@ -1,0 +1,842 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>Agreement
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>sourceSystemNumber</th>
+                  <th>loanAccountNumber</th>
+                  <th>customerNumber</th>
+                  <th>accountStatus</th>
+                  <th>branchCode</th>
+                  <th>portfolioCode</th>
+                  <th>loanType</th>
+                  <th>schemeCode</th>
+                  <th>applicationReferenceId</th>
+                  <th>salesPerson</th>
+                  <th>dealerCode</th>
+                  <th>dealerSalesPerson</th>
+                  <th>repaymentFrequency</th>
+                  <th>paymentType</th>
+                  <th>disbursementDate</th>
+                  <th>loanStartDate</th>
+                  <th>loanEndDate</th>
+                  <th>tenor</th>
+                  <th>cycleDay</th>
+                  <th>graceDays</th>
+                  <th>sanctionAmount</th>
+                  <th>loanAmount</th>
+                  <th>interestRateType</th>
+                  <th>plr</th>
+                  <th>margins</th>
+                  <th>actualInterestRate</th>
+                  <th>installmentAmount</th>
+                  <th>downPayment</th>
+                  <th>downPaymentPercentage</th>
+                  <th>bucketCode</th>
+                  <th>nextDueDate</th>
+                  <th>odDays</th>
+                  <th>excessAmount</th>
+                  <th>lastAmountPaid</th>
+                  <th>lastPaymentDate</th>
+                  <th>odAmount</th>
+                  <th>osAmount</th>
+                  <th>writeOffFlag</th>
+                  <th>writeOffAmount</th>
+                  <th>writeOffDate</th>
+                  <th>writeOffReason1</th>
+                  <th>delinquencyStartDate</th>
+                  <th>nonStarterFlag</th>
+                  <th>osPrinAmount</th>
+                  <th>odPrinAmount</th>
+                  <th>repoflag</th>
+                  <th>loanRestructuredYN</th>
+                  <th>restructuredScheme</th>
+                  <th>moratApplied</th>
+                  <th>moratPeriod</th>
+                  <th>pslCategory</th>
+                  <th>pslSector</th>
+                  <th>pslSubCategory</th>
+                  <th>pslInvestmentInPlantMachinary</th>
+                  <th>pslWeekerSection</th>
+                  <th>pslPurpose</th>
+                  <th>gstnNumber</th>
+                  <th>createdDate</th>
+                 </tr>
+              </thead>
+              <tbody>
+             <tr *ngFor="let agreementData of agreementDetails ;let i = index;">
+
+
+              <td>{{agreementData.sourceSystemNumber}}</td>
+              <td>{{agreementData.loanAccountNumber}}</td>
+              <td>{{agreementData.customerNumber}}</td>
+              <td>{{agreementData.accountStatus}}</td>
+              <td>{{agreementData.branchCode}}</td>
+              <td>{{agreementData.portfolioCode}}</td>
+              <td>{{agreementData.loanType}}</td>
+              <td>{{agreementData.schemeCode}}</td>
+              <td>{{agreementData.applicationReferenceId}}</td>
+              <td>{{agreementData.salesPerson}}</td>
+              <td>{{agreementData.dealerCode}}</td>
+              <td>{{agreementData.dealerSalesPerson}}</td>
+              <td>{{agreementData.repaymentFrequency}}</td>
+              <td>{{agreementData.paymentType}}</td>
+              <td>{{agreementData.disbursementDate}}</td>
+              <td>{{agreementData.loanStartDate}}</td>
+              <td>{{agreementData.loanEndDate}}</td>
+              <td>{{agreementData.tenor}}</td>
+              <td>{{agreementData.cycleDay}}</td>
+              <td>{{agreementData.graceDays}}</td>
+              <td>{{agreementData.sanctionAmount}}</td>
+              <td>{{agreementData.loanAmount}}</td>
+              <td>{{agreementData.interestRateType}}</td>
+              <td>{{agreementData.plr}}</td>
+              <td>{{agreementData.margins}}</td>
+              <td>{{agreementData.actualInterestRate}}</td>
+              <td>{{agreementData.installmentAmount}}</td>
+              <td>{{agreementData.downPayment}}</td>
+              <td>{{agreementData.downPaymentPercentage}}</td>
+              <td>{{agreementData.bucketCode}}</td>
+              <td>{{agreementData.nextDueDate}}</td>
+              <td>{{agreementData.odDays}}</td>
+              <td>{{agreementData.excessAmount}}</td>
+              <td>{{agreementData.lastAmountPaid}}</td>
+              <td>{{agreementData.lastPaymentDate}}</td>
+              <td>{{agreementData.odAmount}}</td>
+              <td>{{agreementData.osAmount}}</td>
+              <td>{{agreementData.writeOffFlag}}</td>
+              <td>{{agreementData.writeOffAmount}}</td>
+              <td>{{agreementData.writeOffDate}}</td>
+              <td>{{agreementData.writeOffReason1}}</td>
+              <td>{{agreementData.delinquencyStartDate}}</td>
+              <td>{{agreementData.nonStarterFlag}}</td>
+              <td>{{agreementData.osPrinAmount}}</td>
+              <td>{{agreementData.odPrinAmount}}</td>
+              <td>{{agreementData.repoflag}}</td>
+              <td>{{agreementData.loanRestructuredYN}}</td>
+              <td>{{agreementData.restructuredScheme}}</td>
+              <td>{{agreementData.moratApplied}}</td>
+              <td>{{agreementData.moratPeriod}}</td>
+              <td>{{agreementData.pslCategory}}</td>
+              <td>{{agreementData.pslSector}}</td>
+              <td>{{agreementData.pslSubCategory}}</td>
+              <td>{{agreementData.pslInvestmentInPlantMachinary}}</td>
+              <td>{{agreementData.pslWeekerSection}}</td>
+              <td>{{agreementData.pslPurpose}}</td>
+              <td>{{agreementData.gstnNumber}}</td>
+              <td>{{agreementData.createdDate}}</td>
+                      <!--    <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.sourceSystemNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.sourceSystemNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.loanAccountNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.loanAccountNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.customerNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.customerNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.accountStatus" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.accountStatus}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.branchCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.branchCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.portfolioCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.portfolioCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.loanType" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.loanType }}
+                  </div> 
+                  </td>
+
+
+
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.schemeCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.schemeCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.loanAccountNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.loanAccountNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.customerNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.customerNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.accountStatus" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.accountStatus}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.branchCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.branchCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.portfolioCode" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.portfolioCode}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.loanType" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.loanType }}
+                  </div> 
+                  </td>
+
+
+
+                  <td>
+                    <div *ngIf="agreementData.isEdit">
+                      <input type="text" [(ngModel)]="agreementData.createdDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!agreementData.isEdit">
+                      {{agreementData.createdDate }}
+                  </div> 
+                  </td>
+                    <td *ngIf="agreementData.status != ''">
+                      <div *ngIf="agreementData.isEdit">
+                        <input type="text" [(ngModel)]="agreementData.submittedDate" class="form-control"/>
+                    </div>
+                    <div *ngIf="!agreementData.isEdit">
+                        {{agreementData.submittedDate | date: 'dd MMM, YYYY'}}
+                    </div> 
+                    </td>
+                    <td *ngIf="agreementData.accountStatus !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="agreementData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editUcic(agreementData.id,agreementData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="agreementData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(agreementData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteAgreement(agreementData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                          
+                        </li>
+                            
+                      </ul>
+                       
+                      
+                      </div>
+                    </td>--> 
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add UCIC details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveAgreement()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">sourceSystemNumber</label>
+            <input class="form-control" placeholder="Enter sourceSystemNumber" type="text" name="sourceSystemNumber"
+              autocomplete="off" formControlName="sourceSystemNumber"
+              [ngClass]="{'is-invalid': submitted && form.sourceSystemNumber.errors}" />
+            <div *ngIf="submitted && form.sourceSystemNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.sourceSystemNumber.errors.required">sourceSystemNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">accountStatus</label>
+            <input class="form-control" placeholder="Enter accountStatus" type="text" name="accountStatus"
+              autocomplete="off" formControlName="accountStatus"
+              [ngClass]="{'is-invalid': submitted && form.accountStatus.errors}" />
+            <div *ngIf="submitted && form.accountStatus.errors" class="invalid-feedback">
+              <span *ngIf="form.accountStatus.errors.required">accountStatus is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">LoanAccountNumber</label>
+            <input class="form-control" placeholder="Enter loanAccountNumber" type="text" name="loanAccountNumber"
+              autocomplete="off" formControlName="loanAccountNumber"
+              [ngClass]="{'is-invalid': submitted && form.loanAccountNumber.errors}" />
+            <div *ngIf="submitted && form.loanAccountNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.loanAccountNumber.errors.required">loanAccountNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">customerNumber</label>
+            <input class="form-control" placeholder="Enter customerNumber" type="text" name="customerNumber"
+              autocomplete="off" formControlName="customerNumber"
+              [ngClass]="{'is-invalid': submitted && form.customerNumber.errors}" />
+            <div *ngIf="submitted && form.customerNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.customerNumber.errors.required">customerNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">branchCode</label>
+            <input class="form-control" placeholder="Enter branchCode" type="text" name="branchCode" autocomplete="off"
+              formControlName="branchCode" [ngClass]="{'is-invalid': submitted && form.branchCode.errors}" />
+            <div *ngIf="submitted && form.branchCode.errors" class="invalid-feedback">
+              <span *ngIf="form.branchCode.errors.required">branchCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">portfolioCode</label>
+            <input class="form-control" placeholder="Enter portfolioCode" type="text" name="portfolioCode" autocomplete="off"
+              formControlName="portfolioCode" [ngClass]="{'is-invalid': submitted && form.portfolioCode.errors}" />
+            <div *ngIf="submitted && form.portfolioCode.errors" class="invalid-feedback">
+              <span *ngIf="form.portfolioCode.errors.required">portfolioCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanType</label>
+            <input class="form-control" placeholder="Enter loanType" type="text" name="loanType"
+              autocomplete="off" formControlName="loanType"
+              [ngClass]="{'is-invalid': submitted && form.loanType.errors}" />
+            <div *ngIf="submitted && form.loanType.errors" class="invalid-feedback">
+              <span *ngIf="form.loanType.errors.required">loanType is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">schemeCode</label>
+            <input class="form-control" placeholder="Enter schemeCode" type="text" name="schemeCode"
+              autocomplete="off" formControlName="schemeCode"
+              [ngClass]="{'is-invalid': submitted && form.schemeCode.errors}" />
+            <div *ngIf="submitted && form.schemeCode.errors" class="invalid-feedback">
+              <span *ngIf="form.schemeCode.errors.required">schemeCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">applicationReferenceId</label>
+            <input class="form-control" placeholder="Enter applicationReferenceId" type="text" name="applicationReferenceId"
+              autocomplete="off" formControlName="applicationReferenceId"
+              [ngClass]="{'is-invalid': submitted && form.applicationReferenceId.errors}" />
+            <div *ngIf="submitted && form.applicationReferenceId.errors" class="invalid-feedback">
+              <span *ngIf="form.applicationReferenceId.errors.required">applicationReferenceId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">salesPerson</label>
+            <input class="form-control" placeholder="Enter salesPerson" type="text" name="salesPerson"
+              autocomplete="off" formControlName="salesPerson"
+              [ngClass]="{'is-invalid': submitted && form.salesPerson.errors}" />
+            <div *ngIf="submitted && form.salesPerson.errors" class="invalid-feedback">
+              <span *ngIf="form.salesPerson.errors.required">salesPerson is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">dealerCode</label>
+            <input class="form-control" placeholder="Enter dealerCode" type="text" name="dealerCode"
+              autocomplete="off" formControlName="dealerCode"
+              [ngClass]="{'is-invalid': submitted && form.dealerCode.errors}" />
+            <div *ngIf="submitted && form.dealerCode.errors" class="invalid-feedback">
+              <span *ngIf="form.dealerCode.errors.required">dealerCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">dealerSalesPerson</label>
+            <input class="form-control" placeholder="Enter dealerSalesPerson" type="text" name="dealerSalesPerson" autocomplete="off"
+              formControlName="dealerSalesPerson" [ngClass]="{'is-invalid': submitted && form.dealerSalesPerson.errors}" />
+            <div *ngIf="submitted && form.dealerSalesPerson.errors" class="invalid-feedback">
+              <span *ngIf="form.dealerSalesPerson.errors.required">dealerSalesPerson is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">repaymentFrequency</label>
+            <input class="form-control" placeholder="Enter repaymentFrequency" type="text" name="repaymentFrequency" autocomplete="off"
+              formControlName="repaymentFrequency" [ngClass]="{'is-invalid': submitted && form.repaymentFrequency.errors}" />
+            <div *ngIf="submitted && form.repaymentFrequency.errors" class="invalid-feedback">
+              <span *ngIf="form.repaymentFrequency.errors.required">repaymentFrequency is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">paymentType</label>
+            <input class="form-control" placeholder="Enter paymentType" type="text" name="paymentType"
+              autocomplete="off" formControlName="paymentType"
+              [ngClass]="{'is-invalid': submitted && form.paymentType.errors}" />
+            <div *ngIf="submitted && form.paymentType.errors" class="invalid-feedback">
+              <span *ngIf="form.paymentType.errors.required">paymentType is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">disbursementDate</label>
+            <input class="form-control" placeholder="Enter disbursementDate" type="date" name="disbursementDate"
+              autocomplete="off" formControlName="disbursementDate"
+              [ngClass]="{'is-invalid': submitted && form.disbursementDate.errors}" />
+            <div *ngIf="submitted && form.disbursementDate.errors" class="invalid-feedback">
+              <span *ngIf="form.disbursementDate.errors.required">disbursementDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanStartDate</label>
+            <input class="form-control" placeholder="Enter loanStartDate" type="date" name="loanStartDate"
+              autocomplete="off" formControlName="loanStartDate"
+              [ngClass]="{'is-invalid': submitted && form.loanStartDate.errors}" />
+            <div *ngIf="submitted && form.loanStartDate.errors" class="invalid-feedback">
+              <span *ngIf="form.loanStartDate.errors.required">loanStartDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanEndDate</label>
+            <input class="form-control" placeholder="Enter loanEndDate" type="date" name="loanEndDate"
+              autocomplete="off" formControlName="loanEndDate"
+              [ngClass]="{'is-invalid': submitted && form.loanEndDate.errors}" />
+            <div *ngIf="submitted && form.loanEndDate.errors" class="invalid-feedback">
+              <span *ngIf="form.loanEndDate.errors.required">loanEndDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">tenor</label>
+            <input class="form-control" placeholder="Enter tenor" type="number" name="tenor"
+              autocomplete="off" formControlName="tenor"
+              [ngClass]="{'is-invalid': submitted && form.tenor.errors}" />
+            <div *ngIf="submitted && form.tenor.errors" class="invalid-feedback">
+              <span *ngIf="form.tenor.errors.required">tenor is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">cycleDay</label>
+            <input class="form-control" placeholder="Enter cycleDay" type="number" name="cycleDay" autocomplete="off"
+              formControlName="cycleDay" [ngClass]="{'is-invalid': submitted && form.cycleDay.errors}" />
+            <div *ngIf="submitted && form.cycleDay.errors" class="invalid-feedback">
+              <span *ngIf="form.cycleDay.errors.required">cycleDay is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">graceDays</label>
+            <input class="form-control" placeholder="Enter graceDays" type="number" name="graceDays" autocomplete="off"
+              formControlName="graceDays" [ngClass]="{'is-invalid': submitted && form.graceDays.errors}" />
+            <div *ngIf="submitted && form.graceDays.errors" class="invalid-feedback">
+              <span *ngIf="form.graceDays.errors.required">graceDays is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">sanctionAmount</label>
+            <input class="form-control" placeholder="Enter sanctionAmount" type="number" name="sanctionAmount"
+              autocomplete="off" formControlName="sanctionAmount"
+              [ngClass]="{'is-invalid': submitted && form.sanctionAmount.errors}" />
+            <div *ngIf="submitted && form.sanctionAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.sanctionAmount.errors.required">sanctionAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanAmount</label>
+            <input class="form-control" placeholder="Enter loanAmount" type="number" name="loanAmount"
+              autocomplete="off" formControlName="loanAmount"
+              [ngClass]="{'is-invalid': submitted && form.loanAmount.errors}" />
+            <div *ngIf="submitted && form.loanAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.loanAmount.errors.required">loanAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">interestRateType</label>
+            <input class="form-control" placeholder="Enter interestRateType" type="text" name="interestRateType"
+              autocomplete="off" formControlName="interestRateType"
+              [ngClass]="{'is-invalid': submitted && form.interestRateType.errors}" />
+            <div *ngIf="submitted && form.interestRateType.errors" class="invalid-feedback">
+              <span *ngIf="form.interestRateType.errors.required">interestRateType is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">plr</label>
+            <input class="form-control" placeholder="Enter plr" type="text" name="plr"
+              autocomplete="off" formControlName="plr"
+              [ngClass]="{'is-invalid': submitted && form.plr.errors}" />
+            <div *ngIf="submitted && form.plr.errors" class="invalid-feedback">
+              <span *ngIf="form.plr.errors.required">plr is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">margins</label>
+            <input class="form-control" placeholder="Enter margins" type="number" name="margins"
+              autocomplete="off" formControlName="margins"
+              [ngClass]="{'is-invalid': submitted && form.margins.errors}" />
+            <div *ngIf="submitted && form.margins.errors" class="invalid-feedback">
+              <span *ngIf="form.margins.errors.required">margins is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">actualInterestRate</label>
+            <input class="form-control" placeholder="Enter actualInterestRate" type="number" name="actualInterestRate" autocomplete="off"
+              formControlName="actualInterestRate" [ngClass]="{'is-invalid': submitted && form.actualInterestRate.errors}" />
+            <div *ngIf="submitted && form.actualInterestRate.errors" class="invalid-feedback">
+              <span *ngIf="form.actualInterestRate.errors.required">actualInterestRate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">installmentAmount</label>
+            <input class="form-control" placeholder="Enter installmentAmount" type="number" name="installmentAmount" autocomplete="off"
+              formControlName="installmentAmount" [ngClass]="{'is-invalid': submitted && form.installmentAmount.errors}" />
+            <div *ngIf="submitted && form.installmentAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.installmentAmount.errors.required">installmentAmount is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">downPayment</label>
+            <input class="form-control" placeholder="Enter downPayment" type="number" name="downPayment"
+              autocomplete="off" formControlName="downPayment"
+              [ngClass]="{'is-invalid': submitted && form.downPayment.errors}" />
+            <div *ngIf="submitted && form.downPayment.errors" class="invalid-feedback">
+              <span *ngIf="form.downPayment.errors.required">downPayment is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">downPaymentPercentage</label>
+            <input class="form-control" placeholder="Enter downPaymentPercentage" type="number" name="downPaymentPercentage"
+              autocomplete="off" formControlName="downPaymentPercentage"
+              [ngClass]="{'is-invalid': submitted && form.downPaymentPercentage.errors}" />
+            <div *ngIf="submitted && form.downPaymentPercentage.errors" class="invalid-feedback">
+              <span *ngIf="form.downPaymentPercentage.errors.required">downPaymentPercentage is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">bucketCode</label>
+            <input class="form-control" placeholder="Enter bucketCode" type="text" name="bucketCode"
+              autocomplete="off" formControlName="bucketCode"
+              [ngClass]="{'is-invalid': submitted && form.bucketCode.errors}" />
+            <div *ngIf="submitted && form.bucketCode.errors" class="invalid-feedback">
+              <span *ngIf="form.bucketCode.errors.required">bucketCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">nextDueDate</label>
+            <input class="form-control" placeholder="Enter nextDueDate" type="date" name="nextDueDate"
+              autocomplete="off" formControlName="nextDueDate"
+              [ngClass]="{'is-invalid': submitted && form.nextDueDate.errors}" />
+            <div *ngIf="submitted && form.nextDueDate.errors" class="invalid-feedback">
+              <span *ngIf="form.nextDueDate.errors.required">nextDueDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">odDays</label>
+            <input class="form-control" placeholder="Enter odDays" type="number" name="odDays"
+              autocomplete="off" formControlName="odDays"
+              [ngClass]="{'is-invalid': submitted && form.odDays.errors}" />
+            <div *ngIf="submitted && form.odDays.errors" class="invalid-feedback">
+              <span *ngIf="form.odDays.errors.required">odDays is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">excessAmount</label>
+            <input class="form-control" placeholder="Enter excessAmount" type="number" name="excessAmount" autocomplete="off"
+              formControlName="excessAmount" [ngClass]="{'is-invalid': submitted && form.excessAmount.errors}" />
+            <div *ngIf="submitted && form.excessAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.excessAmount.errors.required">excessAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">lastAmountPaid</label>
+            <input class="form-control" placeholder="Enter lastAmountPaid" type="number" name="lastAmountPaid" autocomplete="off"
+              formControlName="lastAmountPaid" [ngClass]="{'is-invalid': submitted && form.lastAmountPaid.errors}" />
+            <div *ngIf="submitted && form.lastAmountPaid.errors" class="invalid-feedback">
+              <span *ngIf="form.lastAmountPaid.errors.required">lastAmountPaid is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">lastPaymentDate</label>
+            <input class="form-control" placeholder="Enter lastPaymentDate" type="date" name="lastPaymentDate"
+              autocomplete="off" formControlName="lastPaymentDate"
+              [ngClass]="{'is-invalid': submitted && form.lastPaymentDate.errors}" />
+            <div *ngIf="submitted && form.lastPaymentDate.errors" class="invalid-feedback">
+              <span *ngIf="form.lastPaymentDate.errors.required">lastPaymentDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">odAmount</label>
+            <input class="form-control" placeholder="Enter odAmount" type="number" name="odAmount"
+              autocomplete="off" formControlName="odAmount"
+              [ngClass]="{'is-invalid': submitted && form.odAmount.errors}" />
+            <div *ngIf="submitted && form.odAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.odAmount.errors.required">odAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">osAmount</label>
+            <input class="form-control" placeholder="Enter osAmount" type="number" name="osAmount"
+              autocomplete="off" formControlName="osAmount"
+              [ngClass]="{'is-invalid': submitted && form.osAmount.errors}" />
+            <div *ngIf="submitted && form.osAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.osAmount.errors.required">osAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">writeOffFlag</label>
+            <input class="form-control" placeholder="Enter writeOffFlag" type="text" name="writeOffFlag"
+              autocomplete="off" formControlName="writeOffFlag"
+              [ngClass]="{'is-invalid': submitted && form.writeOffFlag.errors}" />
+            <div *ngIf="submitted && form.writeOffFlag.errors" class="invalid-feedback">
+              <span *ngIf="form.writeOffFlag.errors.required">writeOffFlag is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">writeOffAmount</label>
+            <input class="form-control" placeholder="Enter writeOffAmount" type="number" name="writeOffAmount"
+              autocomplete="off" formControlName="writeOffAmount"
+              [ngClass]="{'is-invalid': submitted && form.writeOffAmount.errors}" />
+            <div *ngIf="submitted && form.writeOffAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.writeOffAmount.errors.required">writeOffAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">writeOffDate</label>
+            <input class="form-control" placeholder="Enter writeOffDate" type="date" name="writeOffDate" autocomplete="off"
+              formControlName="writeOffDate" [ngClass]="{'is-invalid': submitted && form.writeOffDate.errors}" />
+            <div *ngIf="submitted && form.writeOffDate.errors" class="invalid-feedback">
+              <span *ngIf="form.writeOffDate.errors.required">writeOffDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">writeOffReason1</label>
+            <input class="form-control" placeholder="Enter writeOffReason1" type="text" name="writeOffReason1" autocomplete="off"
+              formControlName="writeOffReason1" [ngClass]="{'is-invalid': submitted && form.writeOffReason1.errors}" />
+            <div *ngIf="submitted && form.writeOffReason1.errors" class="invalid-feedback">
+              <span *ngIf="form.writeOffReason1.errors.required">writeOffReason1 is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">delinquencyStartDate</label>
+            <input class="form-control" placeholder="Enter delinquencyStartDate" type="date" name="delinquencyStartDate"
+              autocomplete="off" formControlName="delinquencyStartDate"
+              [ngClass]="{'is-invalid': submitted && form.delinquencyStartDate.errors}" />
+            <div *ngIf="submitted && form.delinquencyStartDate.errors" class="invalid-feedback">
+              <span *ngIf="form.delinquencyStartDate.errors.required">delinquencyStartDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">nonStarterFlag</label>
+            <input class="form-control" placeholder="Enter nonStarterFlag" type="text" name="nonStarterFlag"
+              autocomplete="off" formControlName="nonStarterFlag"
+              [ngClass]="{'is-invalid': submitted && form.nonStarterFlag.errors}" />
+            <div *ngIf="submitted && form.nonStarterFlag.errors" class="invalid-feedback">
+              <span *ngIf="form.nonStarterFlag.errors.required">nonStarterFlag is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">osPrinAmount</label>
+            <input class="form-control" placeholder="Enter osPrinAmount" type="number" name="osPrinAmount"
+              autocomplete="off" formControlName="osPrinAmount"
+              [ngClass]="{'is-invalid': submitted && form.osPrinAmount.errors}" />
+            <div *ngIf="submitted && form.osPrinAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.osPrinAmount.errors.required">osPrinAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">odPrinAmount</label>
+            <input class="form-control" placeholder="Enter odPrinAmount" type="number" name="odPrinAmount"
+              autocomplete="off" formControlName="odPrinAmount"
+              [ngClass]="{'is-invalid': submitted && form.odPrinAmount.errors}" />
+            <div *ngIf="submitted && form.odPrinAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.odPrinAmount.errors.required">odPrinAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">repoflag</label>
+            <input class="form-control" placeholder="Enter repoflag" type="text" name="repoflag"
+              autocomplete="off" formControlName="repoflag"
+              [ngClass]="{'is-invalid': submitted && form.repoflag.errors}" />
+            <div *ngIf="submitted && form.repoflag.errors" class="invalid-feedback">
+              <span *ngIf="form.repoflag.errors.required">repoflag is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanRestructuredYN</label>
+            <input class="form-control" placeholder="Enter loanRestructuredYN" type="text" name="loanRestructuredYN" autocomplete="off"
+              formControlName="loanRestructuredYN" [ngClass]="{'is-invalid': submitted && form.loanRestructuredYN.errors}" />
+            <div *ngIf="submitted && form.loanRestructuredYN.errors" class="invalid-feedback">
+              <span *ngIf="form.loanRestructuredYN.errors.required">loanRestructuredYN is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">restructuredScheme</label>
+            <input class="form-control" placeholder="Enter restructuredScheme" type="text" name="restructuredScheme" autocomplete="off"
+              formControlName="restructuredScheme" [ngClass]="{'is-invalid': submitted && form.restructuredScheme.errors}" />
+            <div *ngIf="submitted && form.restructuredScheme.errors" class="invalid-feedback">
+              <span *ngIf="form.restructuredScheme.errors.required">restructuredScheme is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">moratApplied</label>
+            <input class="form-control" placeholder="Enter moratApplied" type="text" name="moratApplied"
+              autocomplete="off" formControlName="moratApplied"
+              [ngClass]="{'is-invalid': submitted && form.moratApplied.errors}" />
+            <div *ngIf="submitted && form.moratApplied.errors" class="invalid-feedback">
+              <span *ngIf="form.moratApplied.errors.required">moratApplied is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">moratPeriod</label>
+            <input class="form-control" placeholder="Enter moratPeriod" type="text" name="moratPeriod"
+              autocomplete="off" formControlName="moratPeriod"
+              [ngClass]="{'is-invalid': submitted && form.moratPeriod.errors}" />
+            <div *ngIf="submitted && form.moratPeriod.errors" class="invalid-feedback">
+              <span *ngIf="form.moratPeriod.errors.required">moratPeriod is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">pslCategory</label>
+            <input class="form-control" placeholder="Enter pslCategory" type="text" name="pslCategory"
+              autocomplete="off" formControlName="pslCategory"
+              [ngClass]="{'is-invalid': submitted && form.pslCategory.errors}" />
+            <div *ngIf="submitted && form.pslCategory.errors" class="invalid-feedback">
+              <span *ngIf="form.pslCategory.errors.required">pslCategory is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">pslSector</label>
+            <input class="form-control" placeholder="Enter pslSector" type="text" name="pslSector"
+              autocomplete="off" formControlName="pslSector"
+              [ngClass]="{'is-invalid': submitted && form.pslSector.errors}" />
+            <div *ngIf="submitted && form.pslSector.errors" class="invalid-feedback">
+              <span *ngIf="form.pslSector.errors.required">pslSector is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">pslSubCategory</label>
+            <input class="form-control" placeholder="Enter pslSubCategory" type="text" name="pslSubCategory"
+              autocomplete="off" formControlName="pslSubCategory"
+              [ngClass]="{'is-invalid': submitted && form.pslSubCategory.errors}" />
+            <div *ngIf="submitted && form.pslSubCategory.errors" class="invalid-feedback">
+              <span *ngIf="form.pslSubCategory.errors.required">pslSubCategory is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">pslInvestmentInPlantMachinary</label>
+            <input class="form-control" placeholder="Enter pslInvestmentInPlantMachinary" type="text" name="pslInvestmentInPlantMachinary" autocomplete="off"
+              formControlName="pslInvestmentInPlantMachinary" [ngClass]="{'is-invalid': submitted && form.pslInvestmentInPlantMachinary.errors}" />
+            <div *ngIf="submitted && form.pslInvestmentInPlantMachinary.errors" class="invalid-feedback">
+              <span *ngIf="form.pslInvestmentInPlantMachinary.errors.required">pslInvestmentInPlantMachinary is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">pslWeekerSection</label>
+            <input class="form-control" placeholder="Enter pslWeekerSection" type="text" name="pslWeekerSection" autocomplete="off"
+              formControlName="pslWeekerSection" [ngClass]="{'is-invalid': submitted && form.pslWeekerSection.errors}" />
+            <div *ngIf="submitted && form.pslWeekerSection.errors" class="invalid-feedback">
+              <span *ngIf="form.pslWeekerSection.errors.required">pslWeekerSection is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">pslPurpose</label>
+            <input class="form-control" placeholder="Enter pslPurpose" type="text" name="pslPurpose"
+              autocomplete="off" formControlName="pslPurpose"
+              [ngClass]="{'is-invalid': submitted && form.pslPurpose.errors}" />
+            <div *ngIf="submitted && form.pslPurpose.errors" class="invalid-feedback">
+              <span *ngIf="form.pslPurpose.errors.required">pslPurpose is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">gstnNumber</label>
+            <input class="form-control" placeholder="Enter gstnNumber" type="text" name="gstnNumber"
+              autocomplete="off" formControlName="gstnNumber"
+              [ngClass]="{'is-invalid': submitted && form.gstnNumber.errors}" />
+            <div *ngIf="submitted && form.gstnNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.gstnNumber.errors.required">gstnNumber is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

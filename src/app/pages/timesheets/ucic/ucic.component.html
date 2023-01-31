@@ -1,0 +1,238 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>AddUcic
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>Source System Name</th>
+                  <th>Application Number</th>
+                  <th>LoanAccount Number</th>
+                  <th>Customer Number</th>
+                  <th>AccountStatus</th>
+                  <th>Ucic</th>
+                  <th>Gucic</th>
+                  <th>CreatedDate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ucicData of ucicDetails ;let i = index;">
+               <!--   <td> {{ucicData.sourceSystemName}}</td>
+                  <td> {{ucicData.applicationNumber}}</td>
+                  <td> {{ucicData.loanAccountNumber}}</td>
+                  <td> {{ucicData.customerNumber}}</td>
+                  <td> {{ucicData.accountStatus}}</td>
+                  <td> {{ucicData.ucic}}</td>
+                  <td> {{ucicData.gucic}}</td>
+                  <td>{{ucicData.createdDate}}</td>-->
+                
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.sourceSystemName" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.sourceSystemName}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.applicationNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.applicationNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.loanAccountNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.loanAccountNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.customerNumber" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.customerNumber}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.accountStatus" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.accountStatus}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.ucic" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.ucic}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.gucic" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.gucic }}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="ucicData.isEdit">
+                      <input type="text" [(ngModel)]="ucicData.createdDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!ucicData.isEdit">
+                      {{ucicData.createdDate }}
+                  </div> 
+                  </td>
+                    <td *ngIf="ucicData.status != ''">
+                      <div *ngIf="ucicData.isEdit">
+                        <input type="text" [(ngModel)]="ucicData.submittedDate" class="form-control"/>
+                    </div>
+                    <div *ngIf="!ucicData.isEdit">
+                        {{ucicData.submittedDate | date: 'dd MMM, YYYY'}}
+                    </div> 
+                    </td>
+                    <td *ngIf="ucicData.accountStatus !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="ucicData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editUcic(ucicData.id,ucicData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="ucicData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(ucicData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteUcic(ucicData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                          
+                        </li>
+                            
+                      </ul>
+                       
+                      
+                      </div>
+                    </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add UCIC details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveUcic()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">SourceSystemName</label>
+            <input class="form-control" placeholder="Enter sourceSystemName" type="text" name="sourceSystemName"
+              autocomplete="off" formControlName="sourceSystemName"
+              [ngClass]="{'is-invalid': submitted && form.sourceSystemName.errors}" />
+            <div *ngIf="submitted && form.sourceSystemName.errors" class="invalid-feedback">
+              <span *ngIf="form.sourceSystemName.errors.required">sourceSystemName is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">ApplicationNumber</label>
+            <input class="form-control" placeholder="Enter applicationNumber" type="text" name="applicationNumber"
+              autocomplete="off" formControlName="applicationNumber"
+              [ngClass]="{'is-invalid': submitted && form.applicationNumber.errors}" />
+            <div *ngIf="submitted && form.applicationNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.applicationNumber.errors.required">applicationNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">LoanAccountNumber</label>
+            <input class="form-control" placeholder="Enter loanAccountNumber" type="text" name="loanAccountNumber"
+              autocomplete="off" formControlName="loanAccountNumber"
+              [ngClass]="{'is-invalid': submitted && form.loanAccountNumber.errors}" />
+            <div *ngIf="submitted && form.loanAccountNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.loanAccountNumber.errors.required">loanAccountNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">customerNumber</label>
+            <input class="form-control" placeholder="Enter customerNumber" type="text" name="customerNumber"
+              autocomplete="off" formControlName="customerNumber"
+              [ngClass]="{'is-invalid': submitted && form.customerNumber.errors}" />
+            <div *ngIf="submitted && form.customerNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.customerNumber.errors.required">customerNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">Ucic</label>
+            <input class="form-control" placeholder="Enter ucic" type="text" name="ucic" autocomplete="off"
+              formControlName="ucic" [ngClass]="{'is-invalid': submitted && form.ucic.errors}" />
+            <div *ngIf="submitted && form.ucic.errors" class="invalid-feedback">
+              <span *ngIf="form.ucic.errors.required">ucic is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">Gucic</label>
+            <input class="form-control" placeholder="Enter gucic" type="text" name="gucic" autocomplete="off"
+              formControlName="gucic" [ngClass]="{'is-invalid': submitted && form.gucic.errors}" />
+            <div *ngIf="submitted && form.gucic.errors" class="invalid-feedback">
+              <span *ngIf="form.gucic.errors.required">gucic is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">AccountStatus</label>
+            <input class="form-control" placeholder="Enter accountStatus" type="text" name="accountStatus"
+              autocomplete="off" formControlName="accountStatus"
+              [ngClass]="{'is-invalid': submitted && form.accountStatus.errors}" />
+            <div *ngIf="submitted && form.accountStatus.errors" class="invalid-feedback">
+              <span *ngIf="form.accountStatus.errors.required">accountStatus is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

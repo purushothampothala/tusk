@@ -1,0 +1,632 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>Asset
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th> TypeOfAsset</th>
+                  <th> assetSerialNo</th>
+                  <th> loanAccountNumber</th>
+                  <th> assetCode</th>
+                  <th> description</th>
+                  <th> Make</th>
+                  <th> model</th>
+                  <th> yearOfManufacturing</th>
+                  <th> chassisNumber</th>
+                  <th> engineModel</th>
+                  <th> engineCapacity</th>
+                  <th> registrationNumber</th>
+                  <th> originalCost</th>
+                  <th>currentValue</th>
+                  <th>statusOfAsset</th>
+                  <th>miscRemarks</th>
+                  <th>owner</th>
+                  <th>ownerType</th>
+                  <th>valuationDate</th>
+                  <th>builtArea</th>
+                  <th>area</th>
+                  <th>taluka</th>
+                  <th>district</th>
+                  <th> machineryName</th>
+                  <th> invoiceNo</th>
+                  <th> underConstructionYn</th>
+                  <th> dateExpectedCompletion</th>
+                  <th> constructionComplete</th>
+                  <th> yearsOfConstComplete</th>
+                  <th> npaFlag</th>
+                  <th> createdDate</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let assetData of assetDetails ;let i = index;">
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.typeOfAsset" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.typeOfAsset}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.assetSerialNo" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.assetSerialNo}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.loanAccountNumber" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.loanAccountNumber}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.assetCode" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.assetCode}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.description" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.description}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.make" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.make}}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.model" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.model }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.yearOfManufacturing" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.yearOfManufacturing }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.chassisNumber" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.chassisNumber }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.engineModel" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.engineModel }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.engineCapacity" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.engineCapacity }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.registrationNumber" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.registrationNumber }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.originalCost" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.originalCost }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.currentValue" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.currentValue }}
+                    </div>
+                  </td>
+
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.statusOfAsset" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.statusOfAsset }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.miscRemarks" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.miscRemarks }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.owner" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.owner }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.ownerType" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.ownerType }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.valuationDate" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.valuationDate }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.builtArea" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.builtArea }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.area" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.area }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.taluka" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.taluka }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.district" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.district }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.machineryName" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.machineryName }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.invoiceNo" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.invoiceNo }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.underConstructionYn" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.underConstructionYn }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.dateExpectedCompletion" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.dateExpectedCompletion }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.constructionComplete" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.constructionComplete }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.yearsOfConstComplete" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.yearsOfConstComplete }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.npaFlag" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.npaFlag }}
+                    </div>
+                  </td>
+                  <td>
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.createdDate" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.createdDate }}
+                    </div>
+                  </td>
+                  <td *ngIf="assetData.createdDate != ''">
+                    <div *ngIf="assetData.isEdit">
+                      <input type="text" [(ngModel)]="assetData.createdDate" class="form-control" />
+                    </div>
+                    <div *ngIf="!assetData.isEdit">
+                      {{assetData.submittedDate | date: 'dd MMM, YYYY'}}
+                    </div>
+                  </td>
+                  <td *ngIf="assetData.accountStatus !== ''">
+                    <div class="dropdown" ngbDropdown placement="bottom-right">
+                      <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                        ngbDropdownToggle aria-expanded="false">
+                        <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                      </a>
+                      <div *ngIf="assetData.isEdit">
+                        <button class="btn btn-sm btn-success"
+                          (click)="editAsset(assetData.id,assetData)">Update</button>
+                        <button class="btn btn-sm btn-danger" (click)="assetData.isEdit = false">Cancel</button>
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(assetData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteAsset(assetData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add Asset details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveAsset()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">typeOfAsset</label>
+            <input class="form-control" placeholder="Enter typeOfAsset" type="text" name="typeOfAsset"
+              autocomplete="off" formControlName="typeOfAsset"
+              [ngClass]="{'is-invalid': submitted && form.typeOfAsset.errors}" />
+            <div *ngIf="submitted && form.typeOfAsset.errors" class="invalid-feedback">
+              <span *ngIf="form.typeOfAsset.errors.required">typeOfAsset is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">loanAccountNumber</label>
+            <input class="form-control" placeholder="Enter loanAccountNumber" type="text" name="loanAccountNumber"
+              autocomplete="off" formControlName="loanAccountNumber"
+              [ngClass]="{'is-invalid': submitted && form.loanAccountNumber.errors}" />
+            <div *ngIf="submitted && form.loanAccountNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.loanAccountNumber.errors.required">loanAccountNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">assetSerialNo</label>
+            <input class="form-control" placeholder="Enter assetSerialNo" type="number" name="assetSerialNo"
+              autocomplete="off" formControlName="assetSerialNo"
+              [ngClass]="{'is-invalid': submitted && form.assetSerialNo.errors}" />
+            <div *ngIf="submitted && form.assetSerialNo.errors" class="invalid-feedback">
+              <span *ngIf="form.assetSerialNo.errors.required">assetSerialNo is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">assetCode</label>
+            <input class="form-control" placeholder="Enter assetCode" type="text" name="assetCode" autocomplete="off"
+              formControlName="assetCode" [ngClass]="{'is-invalid': submitted && form.assetCode.errors}" />
+            <div *ngIf="submitted && form.assetCode.errors" class="invalid-feedback">
+              <span *ngIf="form.assetCode.errors.required">assetCode is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">description</label>
+            <input class="form-control" placeholder="Enter description" type="text" name="description"
+              autocomplete="off" formControlName="description"
+              [ngClass]="{'is-invalid': submitted && form.description.errors}" />
+            <div *ngIf="submitted && form.description.errors" class="invalid-feedback">
+              <span *ngIf="form.description.errors.required">description is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">make</label>
+            <input class="form-control" placeholder="Enter make" type="text" name="make" autocomplete="off"
+              formControlName="make" [ngClass]="{'is-invalid': submitted && form.make.errors}" />
+            <div *ngIf="submitted && form.make.errors" class="invalid-feedback">
+              <span *ngIf="form.make.errors.required">make is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">model</label>
+            <input class="form-control" placeholder="Enter model" type="text" name="model" autocomplete="off"
+              formControlName="model" [ngClass]="{'is-invalid': submitted && form.model.errors}" />
+            <div *ngIf="submitted && form.model.errors" class="invalid-feedback">
+              <span *ngIf="form.model.errors.required">model is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">yearOfManufacturing</label>
+            <input class="form-control" placeholder="Enter yearOfManufacturing" type="number" name="yearOfManufacturing"
+              autocomplete="off" formControlName="yearOfManufacturing"
+              [ngClass]="{'is-invalid': submitted && form.yearOfManufacturing.errors}" />
+            <div *ngIf="submitted && form.yearOfManufacturing.errors" class="invalid-feedback">
+              <span *ngIf="form.yearOfManufacturing.errors.required">yearOfManufacturing is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">chassisNumber</label>
+            <input class="form-control" placeholder="Enter chassisNumber" type="text" name="chassisNumber"
+              autocomplete="off" formControlName="chassisNumber"
+              [ngClass]="{'is-invalid': submitted && form.chassisNumber.errors}" />
+            <div *ngIf="submitted && form.chassisNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.chassisNumber.errors.required">chassisNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">engineModel</label>
+            <input class="form-control" placeholder="Enter engineModel" type="text" name="engineModel"
+              autocomplete="off" formControlName="engineModel"
+              [ngClass]="{'is-invalid': submitted && form.engineModel.errors}" />
+            <div *ngIf="submitted && form.engineModel.errors" class="invalid-feedback">
+              <span *ngIf="form.engineModel.errors.required">engineModel is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">engineCapacity</label>
+            <input class="form-control" placeholder="Enter engineCapacity" type="text" name="engineCapacity"
+              autocomplete="off" formControlName="engineCapacity"
+              [ngClass]="{'is-invalid': submitted && form.engineCapacity.errors}" />
+            <div *ngIf="submitted && form.engineCapacity.errors" class="invalid-feedback">
+              <span *ngIf="form.engineCapacity.errors.required">engineCapacity is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">registrationNumber</label>
+            <input class="form-control" placeholder="Enter registrationNumber" type="number" name="registrationNumber"
+              autocomplete="off" formControlName="registrationNumber"
+              [ngClass]="{'is-invalid': submitted && form.registrationNumber.errors}" />
+            <div *ngIf="submitted && form.registrationNumber.errors" class="invalid-feedback">
+              <span *ngIf="form.registrationNumber.errors.required">registrationNumber is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">originalCost</label>
+            <input class="form-control" placeholder="Enter originalCost" type="number" name="originalCost"
+              autocomplete="off" formControlName="originalCost"
+              [ngClass]="{'is-invalid': submitted && form.originalCost.errors}" />
+            <div *ngIf="submitted && form.originalCost.errors" class="invalid-feedback">
+              <span *ngIf="form.originalCost.errors.required">originalCost is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">currentValue</label>
+            <input class="form-control" placeholder="Enter currentValue" type="number" name="currentValue"
+              autocomplete="off" formControlName="currentValue"
+              [ngClass]="{'is-invalid': submitted && form.currentValue.errors}" />
+            <div *ngIf="submitted && form.currentValue.errors" class="invalid-feedback">
+              <span *ngIf="form.currentValue.errors.required">currentValue is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">statusOfAsset</label>
+            <input class="form-control" placeholder="Enter statusOfAsset" type="text" name="statusOfAsset"
+              autocomplete="off" formControlName="statusOfAsset"
+              [ngClass]="{'is-invalid': submitted && form.statusOfAsset.errors}" />
+            <div *ngIf="submitted && form.statusOfAsset.errors" class="invalid-feedback">
+              <span *ngIf="form.statusOfAsset.errors.required">statusOfAsset is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">miscRemarks</label>
+            <input class="form-control" placeholder="Enter miscRemarks" type="text" name="miscRemarks"
+              autocomplete="off" formControlName="miscRemarks"
+              [ngClass]="{'is-invalid': submitted && form.miscRemarks.errors}" />
+            <div *ngIf="submitted && form.miscRemarks.errors" class="invalid-feedback">
+              <span *ngIf="form.miscRemarks.errors.required">miscRemarks is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">owner</label>
+            <input class="form-control" placeholder="Enter owner" type="text" name="owner" autocomplete="off"
+              formControlName="owner" [ngClass]="{'is-invalid': submitted && form.owner.errors}" />
+            <div *ngIf="submitted && form.owner.errors" class="invalid-feedback">
+              <span *ngIf="form.owner.errors.required">owner is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">ownerType</label>
+            <input class="form-control" placeholder="Enter ownerType" type="text" name="ownerType" autocomplete="off"
+              formControlName="ownerType" [ngClass]="{'is-invalid': submitted && form.ownerType.errors}" />
+            <div *ngIf="submitted && form.ownerType.errors" class="invalid-feedback">
+              <span *ngIf="form.ownerType.errors.required">ownerType is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">valuationDate</label>
+            <input class="form-control" placeholder="Enter valuationDate" type="date" name="valuationDate"
+              autocomplete="off" formControlName="valuationDate"
+              [ngClass]="{'is-invalid': submitted && form.valuationDate.errors}" />
+            <div *ngIf="submitted && form.valuationDate.errors" class="invalid-feedback">
+              <span *ngIf="form.valuationDate.errors.required">valuationDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">area</label>
+            <input class="form-control" placeholder="Enter area" type="text" name="area" autocomplete="off"
+              formControlName="area" [ngClass]="{'is-invalid': submitted && form.area.errors}" />
+            <div *ngIf="submitted && form.area.errors" class="invalid-feedback">
+              <span *ngIf="form.area.errors.required">area is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">builtArea</label>
+            <input class="form-control" placeholder="Enter builtArea" type="text" name="builtArea" autocomplete="off"
+              formControlName="builtArea" [ngClass]="{'is-invalid': submitted && form.builtArea.errors}" />
+            <div *ngIf="submitted && form.builtArea.errors" class="invalid-feedback">
+              <span *ngIf="form.builtArea.errors.required">builtArea is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">taluka</label>
+            <input class="form-control" placeholder="Enter taluka" type="text" name="taluka" autocomplete="off"
+              formControlName="taluka" [ngClass]="{'is-invalid': submitted && form.taluka.errors}" />
+            <div *ngIf="submitted && form.taluka.errors" class="invalid-feedback">
+              <span *ngIf="form.taluka.errors.required">taluka is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">district</label>
+            <input class="form-control" placeholder="Enter district" type="text" name="district" autocomplete="off"
+              formControlName="district" [ngClass]="{'is-invalid': submitted && form.district.errors}" />
+            <div *ngIf="submitted && form.district.errors" class="invalid-feedback">
+              <span *ngIf="form.district.errors.required">district is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">machineryName</label>
+            <input class="form-control" placeholder="Enter machineryName" type="text" name="machineryName"
+              autocomplete="off" formControlName="machineryName"
+              [ngClass]="{'is-invalid': submitted && form.machineryName.errors}" />
+            <div *ngIf="submitted && form.machineryName.errors" class="invalid-feedback">
+              <span *ngIf="form.machineryName.errors.required">machineryName is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">invoiceNo</label>
+            <input class="form-control" placeholder="Enter invoiceNo" type="text" name="invoiceNo" autocomplete="off"
+              formControlName="invoiceNo" [ngClass]="{'is-invalid': submitted && form.invoiceNo.errors}" />
+            <div *ngIf="submitted && form.invoiceNo.errors" class="invalid-feedback">
+              <span *ngIf="form.invoiceNo.errors.required">invoiceNo is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">underConstructionYn</label>
+            <input class="form-control" placeholder="Enter underConstructionYn" type="text" name="underConstructionYn"
+              autocomplete="off" formControlName="underConstructionYn"
+              [ngClass]="{'is-invalid': submitted && form.underConstructionYn.errors}" />
+            <div *ngIf="submitted && form.underConstructionYn.errors" class="invalid-feedback">
+              <span *ngIf="form.underConstructionYn.errors.required">underConstructionYn is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">dateExpectedCompletion</label>
+            <input class="form-control" placeholder="Enter dateExpectedCompletion" type="date"
+              name="dateExpectedCompletion" autocomplete="off" formControlName="dateExpectedCompletion"
+              [ngClass]="{'is-invalid': submitted && form.dateExpectedCompletion.errors}" />
+            <div *ngIf="submitted && form.dateExpectedCompletion.errors" class="invalid-feedback">
+              <span *ngIf="form.dateExpectedCompletion.errors.required">dateExpectedCompletion is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">constructionComplete</label>
+            <input class="form-control" placeholder="Enter constructionComplete" type="text" name="constructionComplete"
+              autocomplete="off" formControlName="constructionComplete"
+              [ngClass]="{'is-invalid': submitted && form.constructionComplete.errors}" />
+            <div *ngIf="submitted && form.constructionComplete.errors" class="invalid-feedback">
+              <span *ngIf="form.constructionComplete.errors.required">constructionComplete is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">yearsOfConstComplete</label>
+            <input class="form-control" placeholder="Enter yearsOfConstComplete" type="number"
+              name="yearsOfConstComplete" autocomplete="off" formControlName="yearsOfConstComplete"
+              [ngClass]="{'is-invalid': submitted && form.yearsOfConstComplete.errors}" />
+            <div *ngIf="submitted && form.yearsOfConstComplete.errors" class="invalid-feedback">
+              <span *ngIf="form.yearsOfConstComplete.errors.required">yearsOfConstComplete is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">npaFlag</label>
+            <input class="form-control" placeholder="Enter npaFlag" type="text" name="npaFlag" autocomplete="off"
+              formControlName="npaFlag" [ngClass]="{'is-invalid': submitted && form.npaFlag.errors}" />
+            <div *ngIf="submitted && form.npaFlag.errors" class="invalid-feedback">
+              <span *ngIf="form.npaFlag.errors.required">npaFlag is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

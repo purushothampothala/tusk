@@ -1,0 +1,240 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>Emp Reporting
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>empId</th>
+                  <th>empManagerId</th>
+                  <th>empManagerName </th>
+                  <th>empManagerMobileNo </th>
+                  <th>empManagerEmailId</th>
+                  <th>empManagerFromDate</th>
+                  <th>empManagerToDate</th>
+                  <th>status</th>
+                  <th>CreatedDate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let empreportData of empreportingDetails ;let i = index;">
+               <!--   <td> {{ucicData.sourceSystemName}}</td>
+                  <td> {{ucicData.applicationNumber}}</td>
+                  <td> {{ucicData.loanAccountNumber}}</td>
+                  <td> {{ucicData.customerNumber}}</td>
+                  <td> {{ucicData.accountStatus}}</td>
+                  <td> {{ucicData.ucic}}</td>
+                  <td> {{ucicData.gucic}}</td>
+                  <td>{{ucicData.createdDate}}</td>-->
+                
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empId" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empId}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerId" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerId}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerName" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerName}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerMobileNo" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerMobileNo}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerEmailId" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerEmailId}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerFromDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerFromDate}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.empManagerToDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.empManagerToDate }}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.status" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.status }}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="empreportData.isEdit">
+                      <input type="text" [(ngModel)]="empreportData.createdDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!empreportData.isEdit">
+                      {{empreportData.createdDate }}
+                  </div> 
+                  </td>
+                   
+                    <td *ngIf="empreportData.createdDate !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="empreportData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editUcic(empreportData.id,empreportData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="empreportData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(empreportData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteUcic(empreportData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                          
+                        </li>
+                            
+                      </ul>
+                       
+                      
+                      </div>
+                    </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Employee Reporting details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveEmpReport()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">empId</label>
+            <input class="form-control" placeholder="Enter empId" type="text" name="empId"
+              autocomplete="off" formControlName="empId"
+              [ngClass]="{'is-invalid': submitted && form.empId.errors}" />
+            <div *ngIf="submitted && form.empId.errors" class="invalid-feedback">
+              <span *ngIf="form.empId.errors.required">empId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">empManagerId</label>
+            <input class="form-control" placeholder="Enter empManagerId" type="text" name="empManagerId"
+              autocomplete="off" formControlName="empManagerId"
+              [ngClass]="{'is-invalid': submitted && form.empManagerId.errors}" />
+            <div *ngIf="submitted && form.empManagerId.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerId.errors.required">empManagerId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">empManagerName</label>
+            <input class="form-control" placeholder="Enter empManagerName" type="text" name="empManagerName"
+              autocomplete="off" formControlName="empManagerName"
+              [ngClass]="{'is-invalid': submitted && form.empManagerName.errors}" />
+            <div *ngIf="submitted && form.empManagerName.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerName.errors.required">empManagerName is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">empManagerMobileNo</label>
+            <input class="form-control" placeholder="Enter empManagerMobileNo" type="text" name="empManagerMobileNo"
+              autocomplete="off" formControlName="empManagerMobileNo"
+              [ngClass]="{'is-invalid': submitted && form.empManagerMobileNo.errors}" />
+            <div *ngIf="submitted && form.empManagerMobileNo.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerMobileNo.errors.required">empManagerMobileNo is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">empManagerEmailId</label>
+            <input class="form-control" placeholder="Enter empManagerEmailId" type="text" name="empManagerEmailId" autocomplete="off"
+              formControlName="empManagerEmailId" [ngClass]="{'is-invalid': submitted && form.empManagerEmailId.errors}" />
+            <div *ngIf="submitted && form.empManagerEmailId.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerEmailId.errors.required">empManagerEmailId is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">empManagerFromDate</label>
+            <input class="form-control" placeholder="Enter empManagerFromDate" type="date" name="empManagerFromDate" autocomplete="off"
+              formControlName="empManagerFromDate" [ngClass]="{'is-invalid': submitted && form.empManagerFromDate.errors}" />
+            <div *ngIf="submitted && form.empManagerFromDate.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerFromDate.errors.required">empManagerFromDate is required.</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="control-label">empManagerToDate</label>
+            <input class="form-control" placeholder="Enter empManagerToDate" type="date" name="empManagerToDate"
+              autocomplete="off" formControlName="empManagerToDate"
+              [ngClass]="{'is-invalid': submitted && form.empManagerToDate.errors}" />
+            <div *ngIf="submitted && form.empManagerToDate.errors" class="invalid-feedback">
+              <span *ngIf="form.empManagerToDate.errors.required">empManagerToDate is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>

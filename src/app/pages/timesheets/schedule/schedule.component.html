@@ -1,0 +1,296 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row mb-2">
+            <div class="col-sm-4">
+              <div class="search-box me-2 mb-2 d-inline-block">
+                <div class="position-relative">
+                  <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" />
+                  <i class="bx bx-search-alt search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div class="text-sm-end">
+                <button type="button" class="btn btn-primary btn-rounded mb-2 mr-2" (click)="openModal(content)">
+                  <i class="mdi mdi-plus me-1"></i>Schedule
+                </button>
+              </div>
+            </div>
+            <!-- end col-->
+          </div>
+          <div class="table-responsive">
+            <table class="table align-middle table-nowrap">
+              <thead>
+                <tr>
+                  <th>DueDate</th>
+                  <th>Installment Amount</th>
+                  <th>Principal PartOfInstallment</th>
+                  <th>Interest PartOfInstallment</th>
+                  <th>Tds Part Of Installment</th>
+                  <th>Installment AmountPaidTillDate</th>
+                  <th>Principal AmountPaid</th>
+                  <th>Tds AmountPaid</th>
+                  <th>Interest AmountPaid</th>
+                  <th>Balance Part Of Installment</th>
+                  <th>Last PaymentDate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let scheduleData of scheduleDetails ;let i = index;">
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="date" [(ngModel)]="scheduleData.dueDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.dueDate}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.installmentAmount" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.installmentAmount}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.principalPartOfInstallment" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.principalPartOfInstallment}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.interestPartOfInstallment" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.interestPartOfInstallment}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.tdsPartOfInstallment" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.tdsPartOfInstallment}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="date" [(ngModel)]="scheduleData.installmentAmountPaidTillDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.installmentAmountPaidTillDate}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.principalAmountPaid" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.principalAmountPaid}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.tdsAmountPaid" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.tdsAmountPaid}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.interestAmountPaid" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.interestAmountPaid}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.balancePartOfInstallment" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.balancePartOfInstallment}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="date" [(ngModel)]="scheduleData.lastPaymentDate" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.lastPaymentDate}}
+                  </div> 
+                  </td>
+                  <td>
+                    <div *ngIf="scheduleData.isEdit">
+                      <input type="number" [(ngModel)]="scheduleData.status" class="form-control"/>
+                  </div>
+                  <div *ngIf="!scheduleData.isEdit">
+                      {{scheduleData.status}}
+                  </div> 
+                  </td>
+                    <td *ngIf="scheduleData.loanAccountNumber !== ''">
+                      <div class="dropdown" ngbDropdown placement="bottom-right">
+                        <a href="javascript: void(0);" class="dropdown-toggle card-drop" data-toggle="dropdown"
+                          ngbDropdownToggle aria-expanded="false">
+                          <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                        </a>
+                        <div *ngIf="scheduleData.isEdit">
+                          <button class="btn btn-sm btn-success" (click)="editSchedule(scheduleData.id,scheduleData)" >Update</button> 
+                          <button class="btn btn-sm btn-danger" (click)="scheduleData.isEdit = false">Cancel</button> 
+                      </div>
+                      <ul class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="onEdit(scheduleData)">
+                            <i class="fas fa-pencil-alt text-success me-1">&nbsp;</i>Edit
+                          </button>
+                        </li>
+                        <li>
+                          <button type="button" class="dropdown-item" (click)="deleteSchedule(scheduleData.id)">
+                            <i class="fas fa-trash-alt text-danger me-1">&nbsp;</i>Delete
+                          </button>
+                           </li>
+                        </ul>
+                      </div>
+                    </td>
+                 </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #content role="document" let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title mt-0">Add Schedule details</h5>
+    <button type="button" class="btn-close" aria-hidden="true" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="saveSchedule()" [formGroup]="formData">
+      <div class="row">
+        <div class="col-12">
+          <div class="mb-3">
+            <label class="control-label">dueDate</label>
+            <input class="form-control" placeholder="Enter dueDate" type="date" name="dueDate"
+              autocomplete="off" formControlName="dueDate"
+              [ngClass]="{'is-invalid': submitted && form.dueDate.errors}" />
+            <div *ngIf="submitted && form.dueDate.errors" class="invalid-feedback">
+              <span *ngIf="form.dueDate.errors.required">dueDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">installmentAmount</label>
+            <input class="form-control" placeholder="Enter installmentAmount" type="number" name="installmentAmount"
+              autocomplete="off" formControlName="installmentAmount"
+              [ngClass]="{'is-invalid': submitted && form.installmentAmount.errors}" />
+            <div *ngIf="submitted && form.installmentAmount.errors" class="invalid-feedback">
+              <span *ngIf="form.installmentAmount.errors.required">installmentAmount is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">principalPartOfInstallment</label>
+            <input class="form-control" placeholder="Enter principalPartOfInstallment" type="number" name="principalPartOfInstallment"
+              autocomplete="off" formControlName="principalPartOfInstallment"
+              [ngClass]="{'is-invalid': submitted && form.principalPartOfInstallment.errors}" />
+            <div *ngIf="submitted && form.principalPartOfInstallment.errors" class="invalid-feedback">
+              <span *ngIf="form.principalPartOfInstallment.errors.required">principalPartOfInstallment is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">interestPartOfInstallment</label>
+            <input class="form-control" placeholder="Enter interestPartOfInstallment" type="number" name="interestPartOfInstallment"
+              autocomplete="off" formControlName="interestPartOfInstallment"
+              [ngClass]="{'is-invalid': submitted && form.interestPartOfInstallment.errors}" />
+            <div *ngIf="submitted && form.interestPartOfInstallment.errors" class="invalid-feedback">
+              <span *ngIf="form.interestPartOfInstallment.errors.required">interestPartOfInstallment is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">tdsPartOfInstallment</label>
+            <input class="form-control" placeholder="Enter tdsPartOfInstallment" type="number" name="tdsPartOfInstallment" autocomplete="off"
+              formControlName="tdsPartOfInstallment" [ngClass]="{'is-invalid': submitted && form.tdsPartOfInstallment.errors}" />
+            <div *ngIf="submitted && form.ucic.errors" class="invalid-feedback">
+              <span *ngIf="form.tdsPartOfInstallment.errors.required">tdsPartOfInstallment is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">installmentAmountPaidTillDate</label>
+            <input class="form-control" placeholder="Enter installmentAmountPaidTillDate" type="date" name="installmentAmountPaidTillDate" autocomplete="off"
+              formControlName="installmentAmountPaidTillDate" [ngClass]="{'is-invalid': submitted && form.installmentAmountPaidTillDate.errors}" />
+            <div *ngIf="submitted && form.installmentAmountPaidTillDate.errors" class="invalid-feedback">
+              <span *ngIf="form.installmentAmountPaidTillDate.errors.required">installmentAmountPaidTillDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">principalAmountPaid</label>
+            <input class="form-control" placeholder="Enter principalAmountPaid" type="number" name="principalAmountPaid"
+              autocomplete="off" formControlName="principalAmountPaid"
+              [ngClass]="{'is-invalid': submitted && form.principalAmountPaid.errors}" />
+            <div *ngIf="submitted && form.principalAmountPaid.errors" class="invalid-feedback">
+              <span *ngIf="form.principalAmountPaid.errors.required">principalAmountPaid is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">tdsAmountPaid</label>
+            <input class="form-control" placeholder="Enter tdsAmountPaid" type="number" name="tdsAmountPaid"
+              autocomplete="off" formControlName="tdsAmountPaid"
+              [ngClass]="{'is-invalid': submitted && form.tdsAmountPaid.errors}" />
+            <div *ngIf="submitted && form.tdsAmountPaid.errors" class="invalid-feedback">
+              <span *ngIf="form.tdsAmountPaid.errors.required">tdsAmountPaid is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">interestAmountPaid</label>
+            <input class="form-control" placeholder="Enter interestAmountPaid" type="number" name="interestAmountPaid"
+              autocomplete="off" formControlName="interestAmountPaid"
+              [ngClass]="{'is-invalid': submitted && form.interestAmountPaid.errors}" />
+            <div *ngIf="submitted && form.interestAmountPaid.errors" class="invalid-feedback">
+              <span *ngIf="form.interestAmountPaid.errors.required">interestAmountPaid is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">BalancePartOfInstallment</label>
+            <input class="form-control" placeholder="Enter BalancePartOfInstallment" type="number" name="BalancePartOfInstallment"
+              autocomplete="off" formControlName="BalancePartOfInstallment"
+              [ngClass]="{'is-invalid': submitted && form.BalancePartOfInstallment.errors}" />
+            <div *ngIf="submitted && form.BalancePartOfInstallment.errors" class="invalid-feedback">
+              <span *ngIf="form.BalancePartOfInstallment.errors.required">BalancePartOfInstallment is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">lastPaymentDate</label>
+            <input class="form-control" placeholder="Enter lastPaymentDate" type="date" name="lastPaymentDate"
+              autocomplete="off" formControlName="lastPaymentDate"
+              [ngClass]="{'is-invalid': submitted && form.lastPaymentDate.errors}" />
+            <div *ngIf="submitted && form.lastPaymentDate.errors" class="invalid-feedback">
+              <span *ngIf="form.lastPaymentDate.errors.required">lastPaymentDate is required.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="control-label">status</label>
+            <input class="form-control" placeholder="Enter status" type="text" name="status"
+              autocomplete="off" formControlName="status"
+              [ngClass]="{'is-invalid': submitted && form.status.errors}" />
+            <div *ngIf="submitted && form.status.errors" class="invalid-feedback">
+              <span *ngIf="form.status.errors.required">status is required.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" id="btn-save-event">
+        Save
+      </button>
+    </form>
+  </div>
+</ng-template>
